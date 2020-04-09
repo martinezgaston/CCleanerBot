@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CCleanerBot" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="516,3223" sap2010:WorkflowViewState.IdRef="CCleanerBot_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CCleanerBot" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="516,4731" sap2010:WorkflowViewState.IdRef="CCleanerBot_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
       <x:String>System.Activities</x:String>
@@ -47,12 +47,13 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CCleanerBot" sap:VirtualizedContainerService.HintSize="526,3058" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CCleanerBot" sap:VirtualizedContainerService.HintSize="526,4566" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Window" Name="cmdApp" />
       <Variable x:TypeArguments="x:Boolean" Name="popUpExists" />
       <Variable x:TypeArguments="x:Boolean" Name="registryNotReady" />
       <Variable x:TypeArguments="x:Boolean" Name="issuesFIxed" />
+      <Variable x:TypeArguments="x:Boolean" Name="cleanExists" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -101,7 +102,7 @@
     </ui:OpenApplication>
     <ui:UiElementExists DisplayName="Element Exists 'CCleaner64.exe  CCleaner'" Exists="[popUpExists]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7b8b51abc03038bbfc54c2d14b270041" Selector="&lt;wnd app='ccleaner64.exe' cls='#32770' title='CCleaner' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7b8b51abc03038bbfc54c2d14b270041" Selector="&lt;wnd app='ccleaner*.exe' cls='#32770' title='CCleaner' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -125,7 +126,7 @@
             </ui:CursorPosition>
           </ui:Click.CursorPosition>
           <ui:Click.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="3088a6b42e912bd51fb421af33f93d78" Selector="&lt;wnd app='ccleaner64.exe' cls='#32770' title='CCleaner' /&gt;&lt;wnd ctrlid='7' title='&amp;amp;No' /&gt;">
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="3088a6b42e912bd51fb421af33f93d78" Selector="&lt;wnd app='ccleaner*.exe' cls='#32770' title='CCleaner' /&gt;&lt;wnd ctrlid='7' title='&amp;amp;No' /&gt;">
               <ui:Target.TimeoutMS>
                 <InArgument x:TypeArguments="x:Int32" />
               </ui:Target.TimeoutMS>
@@ -137,6 +138,125 @@
         </ui:Click>
       </If.Then>
     </If>
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="62d9a7a96ae980b293e5927bf2182683" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd aaname='Custom Clean' cls='Button' title='Custom &amp;amp;Clean' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Analyze'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="dd3644c6b038972d9a6c90a310fa6d1c" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1020' title='&amp;amp;Analyze' /&gt;&lt;ctrl name='Analyze' role='push button' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <DoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="484,422" sap2010:WorkflowViewState.IdRef="DoWhile_1">
+      <DoWhile.Condition>
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="cleanExists = False" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+      </DoWhile.Condition>
+      <Sequence sap:VirtualizedContainerService.HintSize="376,260" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+        <ui:UiElementExists DisplayName="Element Exists 'msctls_progress32'" Exists="[cleanExists]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+          <ui:UiElementExists.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7782910088ca24d8a89dbe0c2469cf45" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1007' /&gt;&lt;ctrl role='progress bar' text='100%' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:UiElementExists.Target>
+        </ui:UiElementExists>
+      </Sequence>
+    </DoWhile>
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Run Cleaner'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="047de0b4d7a640a9c505c53d1d2bc5d3" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1021' title='&amp;amp;Run Cleaner' /&gt;&lt;ctrl name='Run Cleaner' role='push button' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <DoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="484,422" sap2010:WorkflowViewState.IdRef="DoWhile_2">
+      <DoWhile.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="runCLeanerExists" />
+      </DoWhile.Variables>
+      <DoWhile.Condition>
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="runCLeanerExists = False" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+      </DoWhile.Condition>
+      <Sequence sap:VirtualizedContainerService.HintSize="376,260" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+        <ui:UiElementExists DisplayName="Element Exists 'msctls_progress32'" Exists="[runCLeanerExists]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
+          <ui:UiElementExists.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7782910088ca24d8a89dbe0c2469cf45" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1007' /&gt;&lt;ctrl role='progress bar' text='100%' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:UiElementExists.Target>
+        </ui:UiElementExists>
+      </Sequence>
+    </DoWhile>
     <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
@@ -149,7 +269,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="fea1c69f0167306a8683ad8174f90719" Selector="&lt;wnd app='ccleaner64.exe' cls='PiriformCCleaner' title='CCleaner - FREE FOR HOME USE' /&gt;&lt;wnd aaname='Registry' cls='Button' title='Re&amp;amp;gistry' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="fea1c69f0167306a8683ad8174f90719" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd aaname='Registry' cls='Button' title='Re&amp;amp;gistry' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -171,7 +291,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="569ac3582d6e505be8617832c2594b6e" Selector="&lt;wnd app='ccleaner64.exe' cls='PiriformCCleaner' title='CCleaner - FREE FOR HOME USE' /&gt;&lt;wnd ctrlid='1026' title='&amp;amp;Scan for Issues' /&gt;&lt;ctrl name='Scan for Issues' role='push button' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="569ac3582d6e505be8617832c2594b6e" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1026' title='&amp;amp;Scan for Issues' /&gt;&lt;ctrl name='Scan for Issues' role='push button' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -183,7 +303,7 @@
     </ui:Click>
     <ui:UiElementExists DisplayName="Element Exists 'push button'" Exists="[registryNotReady]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="41e49427b64849f3b57725e5ecda3fd0" Selector="&lt;wnd app='ccleaner64.exe' cls='PiriformCCleaner' title='CCleaner - FREE FOR HOME USE' /&gt;&lt;wnd ctrlid='1007' /&gt;&lt;ctrl role='progress bar' text='100%' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="41e49427b64849f3b57725e5ecda3fd0" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1007' /&gt;&lt;ctrl role='progress bar' text='100%' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -206,7 +326,7 @@
         <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
         <ui:UiElementExists DisplayName="Element Exists 'push button'" Exists="[registryNotReady]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
           <ui:UiElementExists.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="41e49427b64849f3b57725e5ecda3fd0" Selector="&lt;wnd app='ccleaner64.exe' cls='PiriformCCleaner' title='CCleaner - FREE FOR HOME USE' /&gt;&lt;wnd ctrlid='1007' /&gt;&lt;ctrl role='progress bar' text='100%' /&gt;">
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="41e49427b64849f3b57725e5ecda3fd0" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1007' /&gt;&lt;ctrl role='progress bar' text='100%' /&gt;">
               <ui:Target.TimeoutMS>
                 <InArgument x:TypeArguments="x:Int32" />
               </ui:Target.TimeoutMS>
@@ -230,7 +350,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="530e2f6934b8ee9d12193908a0a3e582" Selector="&lt;wnd app='ccleaner64.exe' cls='PiriformCCleaner' title='CCleaner - FREE FOR HOME USE' /&gt;&lt;wnd ctrlid='1027' title='&amp;amp;Fix selected Issues...' /&gt;&lt;ctrl name='Fix selected Issues...' role='push button' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="530e2f6934b8ee9d12193908a0a3e582" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;&lt;wnd ctrlid='1027' title='&amp;amp;Fix selected Issues...' /&gt;&lt;ctrl name='Fix selected Issues...' role='push button' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -274,7 +394,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="6116d1cd04c6699dc17f82eb4367631b" Selector="&lt;wnd app='ccleaner64.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1100' title='Fix All Selected Issues' /&gt;&lt;ctrl name='Fix All Selected Issues' role='push button' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="6116d1cd04c6699dc17f82eb4367631b" Selector="&lt;wnd app='ccleaner*.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1100' title='Fix All Selected Issues' /&gt;&lt;ctrl name='Fix All Selected Issues' role='push button' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -286,7 +406,7 @@
     </ui:Click>
     <ui:UiElementExists DisplayName="Element Exists 'Static'" Exists="[issuesFIxed]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4633bf69b5a44a4da13c4f974e3334b1" Selector="&lt;wnd app='ccleaner64.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1103' title='Issue Fixed' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4633bf69b5a44a4da13c4f974e3334b1" Selector="&lt;wnd app='ccleaner*.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1103' title='Issue Fixed' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -298,7 +418,7 @@
     </ui:UiElementExists>
     <While sap:VirtualizedContainerService.HintSize="484,418" sap2010:WorkflowViewState.IdRef="While_2">
       <While.Condition>
-        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="issuesFIxed = False" />
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="issuesFIxed = False" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
       </While.Condition>
       <Sequence sap:VirtualizedContainerService.HintSize="376,260" sap2010:WorkflowViewState.IdRef="Sequence_6">
         <sap:WorkflowViewStateService.ViewState>
@@ -309,7 +429,7 @@
         <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
         <ui:UiElementExists DisplayName="Element Exists 'Static'" Exists="[issuesFIxed]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
           <ui:UiElementExists.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4633bf69b5a44a4da13c4f974e3334b1" Selector="&lt;wnd app='ccleaner64.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1103' title='Issue Fixed' /&gt;">
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4633bf69b5a44a4da13c4f974e3334b1" Selector="&lt;wnd app='ccleaner*.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1103' title='Issue Fixed' /&gt;">
               <ui:Target.TimeoutMS>
                 <InArgument x:TypeArguments="x:Int32" />
               </ui:Target.TimeoutMS>
@@ -333,7 +453,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="135ee6780595652aa3d67b38261ca7b7" Selector="&lt;wnd app='ccleaner64.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1104' title='Close' /&gt;&lt;ctrl name='Close' role='push button' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="135ee6780595652aa3d67b38261ca7b7" Selector="&lt;wnd app='ccleaner*.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='1104' title='Close' /&gt;&lt;ctrl name='Close' role='push button' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -343,5 +463,6 @@
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
+    <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window 'CCleaner64.exe CCleaner'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="35b78ac25c9909ef22fbd04b22ac403f" Selector="&lt;wnd app='ccleaner*.exe' cls='PiriformCCleaner' title='CCleaner - *' /&gt;" WaitForReady="INTERACTIVE" />
   </Sequence>
 </Activity>
